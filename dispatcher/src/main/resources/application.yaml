@@ -1,0 +1,9 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+server:
+  port: ${SERVER_PORT}
+
+bot:
+  username: ${BOT_USERNAME}
+  token: ${BOT_TOKEN}
