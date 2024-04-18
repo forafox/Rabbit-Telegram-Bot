@@ -14,7 +14,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.4")
     implementation("org.telegram:telegrambots-spring-boot-starter:6.9.7.1")
-
+    implementation(project(":common-rabbitmq"))
     compileOnly("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
 }

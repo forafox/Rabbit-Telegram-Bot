@@ -2,6 +2,7 @@ package org.forafox.controller;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -16,17 +17,17 @@ public class TelegramBot extends TelegramLongPollingBot {
     private String botToken;
     @Value("${bot.username}")
     private String botUsername;
-    ;
+    @Autowired
+    private UpdateController updateController;
+
+    @PostConstruct
+    public void init(){
+        updateController.registerBot(this);
+    }
 
     @Override
     public void onUpdateReceived(Update update) {
-        var originalMessage = update.getMessage();
-        log.debug(originalMessage.getText());
-
-        var response = new SendMessage();
-        response.setChatId(originalMessage.getChatId().toString());
-        response.setText("Hello from bot");
-        sendAnswerMessage(response);
+        updateController.processUpdate(update);
     }
 
     public void sendAnswerMessage(SendMessage message) {
