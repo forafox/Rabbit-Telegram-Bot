@@ -15,6 +15,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.4")
     implementation("org.telegram:telegrambots-spring-boot-starter:6.9.7.1")
     implementation(project(":common-rabbitmq"))
+    implementation("org.springframework.boot:spring-boot-starter-amqp:3.2.5")
     compileOnly("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
 }
