@@ -1,0 +1,10 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  rabbitmq:
+    host: localhost
+    port: ${RABBITMQ_PORT}
+    username: user
+    password: ${RABBITMQ_PASSWORD}
+server:
+  port: ${SERVER_NODE_PORT}
